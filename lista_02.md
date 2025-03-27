@@ -1,169 +1,141 @@
-# Instruções
-
-- Faça uma cópia deste arquivo .md para um repositório próprio
-- Resolva as 6 questões objetivas assinalando a alternativa correta
-- Resolva as 4 questões dissertativas escrevendo no próprio arquivo .md
-  - lembre-se de utilizar as estruturas de código como ``esta aqui com ` `` ou
-```javascript
-//esta aqui com ```
-let a = "olá"
-let b = 10
-print(a)
-```
-- Resolva as questões com uso do Visual Studio Code ou ambiente similar.
-- Teste seus códigos antes de trazer a resposta para cá.
-- Cuidado com ChatGPT e afins: entregar algo só para ganhar nota não faz você aprender e ficar mais inteligente. Não seja dependente da máquina! (E não se envolva em plágio!)
-- ao final, publique seu arquivo lista_02.md com as respostas em seu repositório, e envie o link pela Adalove. 
-
-# Questões objetivas
-
 **1)** Considere o seguinte código JavaScript:
 
 ```javascript
 //EX01
-let x = 17
-let y = 5
-let z = 8
+let p = 10;
+let q = 3;
+let r = 6;
 
-resultadoBooleano =  (x < y) && (z > x) || (x - y > z)
-console.log(resultadoBooleano)
+let resultado = (p % q === 1) && (r * 2 > p) || (q + r < p);
+console.log(resultado);
 
-const listaDeNumeros = [1, 2, 3, 4, 5];
-let soma = 0;
+const valores = [3, 6, 9, 12, 15];
+let produto = 1;
 
-for (let i = 0; i < listaDeNumeros.length; i++) {
-  soma += listaDeNumeros[i];
+for (let j = 0; j < valores.length; j++) {
+  produto *= valores[j];
 }
 
-console.log("A soma dos números é:", soma);
+console.log("O produto dos valores é:", produto);
+
 
 ```
 Qual das seguintes alternativas melhor descreve o que o código faz?
 
-A) O código avalia a expressão booleana, imprime o resultado `false`, calcula a soma dos números de 1 a 5 e imprime o resultado no console.
+**A) O código avalia a expressão booleana, imprime `true`, calcula o produto dos números na lista e imprime o resultado no console.**
 
-**B) O código avalia a expressão booleana, imprime o resultado `true`, calcula a soma dos números de 1 a 5 e imprime o resultado no console.**
-**Justificativa: o booleano é retornado true por conta da condição de "||" (ou) que é colocada na variável resultadoBooleano, então caso a primeira condição seja falsa, o código seguirá para a segunda afirmação após o ||, que neste caso é verdadeira, portanto o resultado será "true" (caso tivesse && no lugar de ||, o resultado seria "false"). Para o segundo console.log(), é retornada a sima por conta do loop feito com for, que faz a soma de todos os componentes do array (i).**
+B) O código avalia a expressão booleana, imprime `false`, calcula o produto dos números na lista e imprime o resultado no console.
 
-C) O código avalia a expressão booleana, imprime o resultado `true` e verifica se o número 5 está presente na lista de números.
+C) O código avalia a expressão booleana, imprime `true` e, em seguida, verifica se o número 6 está na lista.
 
-D) O código avalia a expressão booleana, imprime o resultado `false` e ordena a lista de números em ordem crescente.
+D) O código avalia a expressão booleana, imprime `false` e ordena os valores em ordem crescente.
 
 
 ______
 
-**2)** Analise as funções calcularOrcamento() e calcularOrcamento2(). Num cenário em que a lista gastos fosse incializada como var gastos = [3600, 950, 620, 38] em ambas funções.
+**2)** O código a seguir contém duas funções que calculam o limite de crédito de um cliente com base nos seus gastos e na renda mensal.
 
 ```javascript
-//Versão 1 da função que calcula orçamento
-function calculaOrcamento(){
-
-    var gastos = [1800, 950, 620, 38];
-    var totalGastos = gastos[0];
-    var salario = 3500;
-    var saldo = 0; 
-    var statusSaldo =  'positivo';
+// Versão 1 da função de análise de crédito
+function analisarCredito1() {
+    var compras = [2500, 1200, 800, 100];
+    var totalCompras = compras[0];
+    var limite = 5000;
+    var status = 'aprovado';
+    var saldoDisponivel = 0;
     var i = 1;
 
-    do{
-        totalGastos += gastos[i];
+    do {
+        totalCompras += compras[i];
         i++;
-    } while(salario >= totalGastos && i<gastos.length)
-    
-    saldo = salario - totalGastos;
+    } while (limite >= totalCompras && i < compras.length);
 
-    if (saldo < 0 ){
-        statusSaldo = 'negativo';
-    } 
-    console.log (`Seu saldo é ${statusSaldo} de ${saldo}. `);
+    saldoDisponivel = limite - totalCompras;
+
+    if (saldoDisponivel < 0) {
+        status = 'negado';
+    }
+    console.log(`Seu crédito foi ${status}. Saldo disponível: ${saldoDisponivel}.`);
 }
 ```
 
 ```javascript
-//Versão 2 da função que calcula orçamento
-function calculaOrcamento2(){
-
-    var gastos = [1800, 950, 620, 38];
-    var totalGastos = gastos[0];
-    var salario = 3500;
-    var statusSaldo =  'positivo';
-    var saldo = 0;
+// Versão 2 da função de análise de crédito
+function analisarCredito2() {
+    var compras = [2500, 1200, 800, 100];
+    var totalCompras = compras[0];
+    var limite = 5000;
+    var status = 'aprovado';
+    var saldoDisponivel = 0;
     var i = 1;
 
-    while(salario >= totalGastos && i<gastos.length){
-        totalGastos += gastos[i];
+    while (limite >= totalCompras && i < compras.length) {
+        totalCompras += compras[i];
         i++;
     }
 
-    saldo = salario - totalGastos;
-    if (saldo < 0 ){
-        statusSaldo = 'negativo';
-    } 
-    console.log (`Seu saldo é ${statusSaldo} de ${saldo}. `);
+    saldoDisponivel = limite - totalCompras;
+
+    if (saldoDisponivel < 0) {
+        status = 'negado';
+    }
+    console.log(`Seu crédito foi ${status}. Saldo disponível: ${saldoDisponivel}.`);
 }
 ```
+Se ambas as funções forem executadas com os valores fornecidos, qual será a saída exibida no console?
 
-Escolha a opção que responde corretamente qual seria a saída após a execução de cada função:
+**A) Ambas as funções exibirão: 'Seu crédito foi aprovado. Saldo disponível: 400.'**
 
-A) As funções calcularOrcamento() e calcularOrcamento2() teriam a mesma saída: 'Seu saldo é negativo de -1050.'
+B) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -600.', enquanto analisarCredito2() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.'
 
-**B) A saída de calcularOrcamento() seria: 'Seu saldo é negativo de -1050.' e a de calcularOrcamento2() seria: 'Seu saldo é negativo de -100.'**
-**Justificativa: O que acontece em ambas funçõe quando o array se inicia com '3600' é que var gastos[0] já inicia maior que salário, portanto o que o código roda é apenas saldo = salario - totalGastos; e if(saldo < 0){}, portanto o que é imprimido no console é "-1050" e "-100"**
+C) analisarCredito1() exibirá: 'Seu crédito foi negado. Saldo disponível: -200.', enquanto analisarCredito2() exibirá: 'Seu crédito foi aprovado. Saldo disponível: 100.'
 
-C) A saída de calcularOrcamento() seria: 'Seu saldo é negativo de -100.' e a de calcularOrcamento2() seria: 'Seu saldo é negativo de -1050.'
-
-D) As funções calcularOrcamento() e calcularOrcamento2() teriam a mesma saída: 'Seu saldo é negativo de -100.'
-
+D) Ambas as funções exibirão: 'Seu crédito foi aprovado Saldo disponível: 500.'
 ______
 
 **3)** Considere o seguinte trecho de código em JavaScript:
 ```javascript
 //EX03
-const numero = 10;
+const idade = 21;
 
-if (numero % 2 === 0) {
-  console.log("O número é par!");
-} else if (numero % 3 === 0) {
-  console.log("O número é divisível por 3!");
+if (idade >= 18 && idade < 60) {
+  console.log("Você é um adulto!");
+} else if (idade < 18) {
+  console.log("Você é menor de idade!");
 } else {
-  console.log("O número é ímpar e não é divisível por 3!");
+  console.log("Você está na melhor idade!");
 }
 ```
+Qual das seguintes alternativas melhor descreve o comportamento do código?
 
-Qual das seguintes alternativas é a descrição mais precisa do que o código faz?
+A) O código verifica se a idade indica um adulto ou um idoso e exibe a mensagem correspondente.
 
+**B) O código verifica se a idade pertence à faixa adulta. Se for, exibe "Você é um adulto!". Caso contrário, verifica se é menor de idade e exibe "Você é menor de idade!". Se nenhuma das condições anteriores for verdadeira, exibe "Você está na melhor idade!".**
 
-A) O código verifica se o número é divisível por 3 e, se for, exibe a mensagem "O número é divisível por 3!".
+C) O código verifica se a idade está entre 18 e 60 anos e, se for, imprime "Você é um adulto!". Se não estiver nesse intervalo, imprime "Você está na melhor idade!".
 
-B) O código verifica se o número é par ou ímpar. Se for par, exibe a mensagem "O número é par!". Se for ímpar, exibe a mensagem "O número é ímpar!".
-
-C) O código verifica se o número é par, ímpar ou divisível por 3. Se for par, exibe a mensagem "O número é par!". Se for divisível por 3, exibe a mensagem "O número é divisível por 3!". Se for ímpar, exibe a mensagem "O número é ímpar e não é divisível por 3!".
-
-**D) O código verifica se o número é par, se é divisível por 3 ou se é ímpar. Se for par, exibe a mensagem "O número é par!". Se for divisível por 3 (e não for par), exibe a mensagem "O número é divisível por 3!". Se for ímpar (e não for divisível por 3), exibe a mensagem "O número é ímpar e não é divisível por 3!".**
-**Justificativa: o símbolo de porcentagem presente nas linhas 3 e 5 do código verificam se o número definido na variável é divisível por 2 e 3, o que mostra, inicialmente se o número é par e caso não seja, se é divisível por 3, caso nenhuma dessas condições sejam verdadeiras, o resultado é que o número é ímpar e não divisível por 3.**
-
-
+D) O código verifica se a idade é menor de 18, entre 18 e 60 ou acima de 60, imprimindo uma mensagem específica para cada caso.
 ______
 
-**4)** Qual será o resultado impresso no console após a execução desse código?
+**4)** Qual será o resultado impresso no console após a execução do seguinte código?
 ```javascript
 //EX04
-var saldo = 1000;
-var limiteCredito = 500;
-var valorCompras = [200, 800, 300, 400, 600];
+var energiaDisponivel = 1200;
+var bateriaExtra = 400;
+var consumoDispositivos = [300, 600, 500, 200, 400];
 
-for (var i = 0; i < valorCompras.length; i++) {
-    var valorCompra = valorCompras[i];
+for (var i = 0; i < consumoDispositivos.length; i++) {
+    var consumo = consumoDispositivos[i];
 
-    if (valorCompra <= saldo) {
-        console.log("Compra " + (i+1) + " aprovada. Saldo restante: " + (saldo - valorCompra));
-        saldo -= valorCompra;
-    } else if (valorCompra <= saldo + limiteCredito) {
-        console.log("Compra " + (i+1) + " aprovada com limite de crédito. Saldo restante: " + ((saldo + limiteCredito) - valorCompra));
-        saldo = 0;
-        limiteCredito -= (valorCompra - saldo);
+    if (consumo <= energiaDisponivel) {
+        console.log("Dispositivo " + (i+1) + " ligado. Energia restante: " + (energiaDisponivel - consumo));
+        energiaDisponivel -= consumo;
+    } else if (consumo <= energiaDisponivel + bateriaExtra) {
+        console.log("Dispositivo " + (i+1) + " ligado com bateria extra. Energia restante: " + ((energiaDisponivel + bateriaExtra) - consumo));
+        energiaDisponivel = 0;
+        bateriaExtra -= (consumo - energiaDisponivel);
     } else {
-        console.log("Compra " + (i+1) + " negada. Saldo insuficiente e limite de crédito excedido.");
+        console.log("Dispositivo " + (i+1) + " não pode ser ligado. Energia insuficiente.");
     }
 }
 ```
@@ -171,224 +143,256 @@ for (var i = 0; i < valorCompras.length; i++) {
 Escolha a opção que responde corretamente:
 
 A)
-Compra 1 aprovada. Saldo restante: 800
+Dispositivo 1 ligado. Energia restante: 900
 
-Compra 2 aprovada com limite de crédito. Saldo restante: 700
+Dispositivo 2 ligado com bateria extra. Energia restante: 700
 
-Compra 3 aprovada. Saldo restante: 400
+Dispositivo 3 ligado. Energia restante: 200
 
-Compra 4 aprovada com limite de crédito. Saldo restante: 0
+Dispositivo 4 ligado com bateria extra. Energia restante: 0
 
-Compra 5 aprovada. Saldo restante: -200
-
+Dispositivo 5 ligado. Energia restante: -200
 
 B)
-Compra 1 aprovada. Saldo restante: 800
+Dispositivo 1 ligado. Energia restante: 900
 
-Compra 2 aprovada com limite de crédito. Saldo restante: 700
+Dispositivo 2 ligado com bateria extra. Energia restante: 700
 
-Compra 3 aprovada. Saldo restante: 200
+Dispositivo 3 ligado. Energia restante: 200
 
-Compra 4 negada. Saldo insuficiente e limite de crédito excedido.
+Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
-Compra 5 negada. Saldo insuficiente e limite de crédito excedido.
-
+Dispositivo 5 não pode ser ligado. Energia insuficiente.
 
 C)
-Compra 1 aprovada. Saldo restante: 800
+Dispositivo 1 ligado. Energia restante: 900
 
-Compra 2 aprovada com limite de crédito. Saldo restante: 700
+Dispositivo 2 ligado com bateria extra. Energia restante: 700
 
-Compra 3 aprovada. Saldo restante: 400
+Dispositivo 3 ligado. Energia restante: 400
 
-Compra 4 negada. Saldo insuficiente e limite de crédito excedido.
-
+Dispositivo 4 não pode ser ligado. Energia insuficiente.
 
 **D)**
+**Dispositivo 1 ligado. Energia restante: 900**
 
-**Compra 1 aprovada. Saldo restante: 800**
+**Dispositivo 2 ligado. Energia restante: 300**
 
-**Compra 2 aprovada. Saldo restante: 0**
+**Dispositivo 3 ligado com bateria extra. Energia restante: 200**
 
-**Compra 3 aprovada com limite de crédito. Saldo restante: 200**
+**Dispositivo 4 não pode ser ligado. Energia insuficiente.**
 
-**Compra 4 negada. Saldo insuficiente e limite de crédito excedido.**
-
-**Compra 5 negada. Saldo insuficiente e limite de crédito excedido.**
-
-**Justificativa: o loop em for com o atributo "valorCompras.length" faz com que todos os elementos da array seja executado, neste exemplo são 5 compras com valores diferentes. Todas as vezes que o loop roda, o saldo é atualizado, a compra 1 e 2 ainda são possíveis de fazer sem o uso do crédito, contudo para a terceira compra o valor de 500 reais é usado e sobram 200 reais, depois disso não é mais possível realizar nenhuma compra pois nem o saldo nem o crédito são possíveis de pagar a dívida.**
+**Dispositivo 5 não pode ser ligado. Energia insuficiente.**
 
 ______
 
-**5)** Qual é o principal ciclo de vida de um jogo em Phaser.js?
+**5)** Qual é a principal função do método update() em um jogo desenvolvido com Phaser.js?
 
-Escolha a opção que responde corretamente:
+Escolha a opção que melhor descreve seu propósito:
 
-A) Setup -> Update -> Draw
+A) O método update() é responsável por carregar os assets do jogo antes da cena ser exibida.
 
-**B) Preload -> Create -> Update**
-**Justificativa: o preload carrega as imagens, sprites, etc. que serão usados em 'create', que por sua vez, mostra as imagens, sprites, etc. que foram carregadas anteriormente. Update é o código que ficará rodando continuamente no jogo.**
+**B) O método update() é chamado continuamente a cada quadro (frame) do jogo, sendo usado para atualizar a lógica, movimentação e interações dos objetos na cena.**
 
-C) Load -> Initialize -> Render
+C) O método update() renderiza todos os sprites na tela e garante que a física do jogo seja processada corretamente.
 
-D) Begin -> Play -> End
+D) O método update() é chamado apenas uma vez após a criação da cena, sendo utilizado para configurar variáveis iniciais do jogo.
 ______
 
-**6)** Qual é o objetivo principal do módulo Arcade Physics em Phaser.js?
+**6)** Qual é o principal objetivo do módulo Matter.js Physics em Phaser.js?
 
 Escolha a opção que responde corretamente:
 
-A) Renderizar gráficos 3D para jogos em HTML5.
+**A) Simular física avançada, incluindo corpos rígidos, colisões complexas e interação entre objetos com gravidade e forças.** ✅
 
-**B) Simular interações físicas realistas, como colisões e movimentos, em jogos 2D.**
-**Justificativa: é possível visualizar isso pois para adicionar este atributo ao jogo, é preciso colocar nas configs do jogo com o texto "physics: 'arcade'"**
+B) Gerenciar eventos de entrada do usuário, como cliques e toques na tela, permitindo movimentação de personagens.
 
-C) Criar efeitos de áudio para melhorar a experiência do usuário em jogos.
+C) Renderizar gráficos otimizados para jogos 2D e garantir uma taxa de quadros estável.
 
-D) Gerenciar a lógica do jogo e a sincronização de eventos em jogos multiplayer.
+D) Criar animações automáticas para sprites e objetos interativos sem necessidade de programação de movimentação.
 
 ______
 
 # Questões dissertativas
 
-**7)** Implemente o pseudocódigo para o algoritmo representado no fluxograma da imagem.
-![Uma imagem](assets/image.png)
+**7)** Uma loja online deseja implementar um sistema de classificação de pedidos com base no valor total da compra. O sistema deve determinar a categoria de um pedido com as seguintes regras:
 
+```
+
+Pedidos abaixo de R$50,00 → "Frete não disponível!"
+
+Pedidos entre R$50,00 e R$199,99 (inclusive) → "Frete com custo adicional!"
+
+Pedidos de R$200,00 ou mais → "Frete grátis!"
+```
+Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
 ```javascript
-// Considerei que o código seria executado sem Node.js
-var idade = prompt("Coloque aqui sua idade: ")
 
-if(idade < 16){
-    console.log("Você não pode votar")
-} else if (idade < 18 ) {
-    console.log("Seu voto é facultativo")
+var valorTotal = prompt("Coloque aqui o valor da compra: ")
+
+if(valorTotal < 50){
+    console.log("Frete não disponível!")
+} else if (valorTotal >= 50 && valorTotal <= 199,99 ) {
+    console.log("Frete com custo adicional!")
 } else {
-    console.log("Seu voto é obrigatório")
+    console.log("Frete grátis!")
 }
 ```
 ______
 
-**8)** Considere a implementação da classe base FormaGeometrica em um sistema de modelagem de formas geométricas. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Retangulo e Circulo, que herdam da classe FormaGeometrica, adicionando atributos específicos e métodos para calcular a área de um retângulo e de um círculo, respectivamente.
+**8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
 
-``` javascript
-    class FormaGeometrica {
-        constructor(cor){
-            this.cor = cor
-        }
-        calcularArea() {
-            let altura = 14
-            let base = 14
-            let area = base * altura
-            console.log("A area do quadrado " + this.cor + " é " + area + " metros quadrados.")
-        }
-    }
-
-    class Retangulo extends FormaGeometrica {
-        calcularArea() {
-            let altura = 10
-            let base = 20
-            let area = base * altura
-            console.log("A area do retangulo " + this.cor + " é " + area + " metros quadrados.")
-        }
-    }
-
-    class Circulo extends FormaGeometrica {
-        calcularArea() {
-            let raio = 8
-            let pi = 3.14
-            let area = raio * raio * pi
-            console.log("A area do círculo " + this.cor + " é " + area + " metros quadrados.")
-        }
-    }
-
-    new FormaGeometrica("azul").calcularArea()
-    new Retangulo("verde").calcularArea()
-    new Circulo("vermelho").calcularArea()
 ```
+Classe Veiculo:
+Atributos:
 
+modelo
+ano
+Método Construtor(modelo, ano):
+
+Define os valores dos atributos modelo e ano com os valores passados como parâmetro.
+Método CalcularConsumo():
+```
+Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
+Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+```
+Classe Veiculo:
+    Atributos:
+        modelo
+        ano
+
+    Método Construtor(modelo, ano):
+        este.modelo <- modelo
+        este.ano <- ano
+
+    Método CalcularConsumo():
+        Escrever("Método genérico - deve ser sobrescrito")
+        Retornar 0
+FimClasse
+
+Classe Carro herda Veiculo:
+    Atributos:
+        eficiencia 
+
+    Método Construtor(modelo, ano, eficiencia):
+        Superclasse(modelo, ano)
+        este.eficiencia <- eficiencia
+
+    Método CalcularConsumo(quilometragem):
+        Se este.eficiencia <= 0 Então
+            Retornar 0
+        Senão
+            Retornar quilometragem / este.eficiencia
+        FimSe
+FimClasse
+
+Classe Moto herda Veiculo:
+    Atributos:
+        eficiencia 
+
+    Método Construtor(modelo, ano, eficiencia):
+        Superclasse(modelo, ano)
+        este.eficiencia <- eficiencia
+
+    Método CalcularConsumo(quilometragem):
+        Se este.eficiencia <= 0 Então
+            Retornar 0
+        Senão
+            Retornar quilometragem / este.eficiencia
+        FimSe
+FimClasse
+
+carroPopular <- Novo Carro("Modelo Genérico", 2020, 14)  // 14 km/l
+motoEsportiva <- Novo Moto("Moto Genérica", 2021, 30)    // 30 km/l
+
+Escrever("Carro consome:", carroPopular.CalcularConsumo(280), "litros")
+Escrever("Moto consome:", motoEsportiva.CalcularConsumo(280), "litros")
+```
 ______
 
-**9)** Você foi contratado(a) como estagiário(a) da Tesla e está participando do desenvolvimento de um programa para simular o desempenho de um carro elétrico em uma corrida. Seu objetivo é determinar em quantos minutos o carro levará para completar uma determinada distância, levando em consideração uma velocidade inicial e uma taxa de aceleração constante. No entanto, você deseja garantir que o carro não exceda uma velocidade máxima nem que a corrida demore mais do que um tempo máximo. Implemente a lógica dessa simulação em pseudocódigo.
+**9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
 
-``` javascript
-    var velocidadeInicial = 20
-    var velocidadeMax = 40
-    var velocidade = velocidadeInicial;
+Entretanto, a sonda não pode ultrapassar um tempo máximo de descida para evitar desvios orbitais, nem pode desacelerar além de um limite mínimo, pois isso poderia causar instabilidade no pouso.
 
-    var aceleracao = 100
+Implemente a lógica dessa simulação em pseudocódigo, considerando a seguinte equação para atualização da velocidade:
 
-    var distanciaPercorrida = 0
-    var distanciaTotal = 10
-
-    var tempo = 0
-    var tempoMax = 20
-
-    while (distanciaPercorrida < distanciaTotal && tempo < tempoMax) {
-        // Adiciona a aceleracao
-        velocidade += aceleracao / 60 // Atualiza a velocidade (km/h para km/min)
-        
-        // Limita a velocidade
-        if (velocidade > velocidadeMax) {
-            velocidade = velocidadeMax
-        }
-
-        if (distanciaPercorrida < distanciaTotal) {
-            // Atualiza a distância percorrida
-            distanciaPercorrida += velocidade / 60 // Atualiza a distância percorrida
-            tempo++ // Adiciona 1 minuto
-        }
-        
-        console.log(`Tempo: ${tempo} min | Velocidade: ${velocidade.toFixed(2)} km/h | Distância: ${distanciaPercorrida.toFixed(2)} km`)
-    }
-
-    // Condição caso o tempo chegue no máximo
-    if (distanciaPercorrida < distanciaTotal) {
-        console.log(`Tempo máximo atingido! Distância percorrida: ${distanciaPercorrida.toFixed(2)} km`)
-    }
+Considere a fórumla de atualização velocidade:
 ```
+    velocidade = velocidadeInicial - desaceleracao * tempo
+```
+Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+```
+var velocidadeInicial, desaceleracao, tempo, velocidadeSegura, tempoMaximo
+inicio
+    Ler(velocidadeInicial)
+    Ler(velocidadeSegura)
+    Ler(desaceleracao)
+    Ler(tempoMaximo)
 
+    tempo = (velocidadeInicial - velocidadeSegura) / desaceleracao
+    
+    Se tempo > tempoMaximo então:
+        Escrever("O tempo ultrapassou o limite permitido.")
+    Senão se desaceleracao <= 0 então:
+        Escrever("A desaceleração deve ser maior que zero.")
+    Senão
+        Escrever("Tempo necessário para pouso seguro:" + tempo)
+fimalgoritmo
+```
 ______
 
-**10)** Uma matriz é uma coleção bidimensional de elementos, organizados em linhas e colunas. A seguir, é fornecida a implementação da função SomaDeMatrizes(matrizA, matrizB), que calcula a soma de duas matrizes. Sua tarefa é implementar uma função semelhante, porém que realize a multiplicação de duas matrizes.
+**10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
 
-```javascript
-function MultiplicacaoDeMatrizes(matrizA, matrizB) {
-    // Verifica se o número de colunas de matrizA é igual ao número de linhas de matrizB
-    if (matrizA[0].length !== matrizB.length) {
-        return "As matrizes não podem ser multiplicadas. O número de colunas de matrizA deve ser igual ao número de linhas de matrizB.";
-    } else {
-        let linhasA = matrizA.length;
-        let colunasA = matrizA[0].length;  // Número de colunas de matrizA
-        let colunasB = matrizB[0].length;  // Número de colunas de matrizB
-        let matrizResultado = [];
+A seguir, é fornecida a implementação da função SomarMatrizesInvestimento(matrizA, matrizB), que soma os valores de duas matrizes de investimento. Sua tarefa é implementar uma função semelhante, porém que realize a multiplicação das matrizes de investimento, determinando como os investimentos afetam os resultados ao longo do tempo.
 
-        // Inicializa a matriz resultado com 0s
-        for (let i = 0; i < linhasA; i++) {
-            matrizResultado[i] = [];
-            for (let j = 0; j < colunasB; j++) {
-                matrizResultado[i][j] = 0;  // Inicializa cada posição com 0
-            }
-        }
-
-        // Loop para calcular a multiplicação das matrizes
-        for (let i = 0; i < linhasA; i++) {
-            for (let j = 0; j < colunasB; j++) {
-                for (let k = 0; k < colunasA; k++) {
-                    matrizResultado[i][j] += matrizA[i][k] * matrizB[k][j];
-                }
-            }
-        }
-
-        return matrizResultado;
-    }
-}
-
-// Exemplo de uso da função
-let matrizA = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
-let matrizB = [[9, 8, 7], [6, 5, 4], [3, 2, 1]];
-
-let multiplicacaoMatriz = MultiplicacaoDeMatrizes(matrizA, matrizB);
-
-console.log("Multiplicação das matrizes:");
-console.log(multiplicacaoMatriz);
 ```
+Função SomarMatrizesInvestimento(matrizA, matrizB):  
+    Se tamanho(matrizA) ≠ tamanho(matrizB) então:  
+        Retornar "As matrizes não podem ser somadas. Elas têm dimensões diferentes."  
+    Senão:  
+        linhas <- tamanho(matrizA)  
+        colunas <- tamanho(matrizA[0])  
+        matrizResultado <- novaMatriz(linhas, colunas)  
+
+        # Loop para percorrer cada elemento das matrizes e calcular a soma  
+        Para i de 0 até linhas-1 faça:  
+            Para j de 0 até colunas-1 faça:  
+                matrizResultado[i][j] <- matrizA[i][j] + matrizB[i][j]  
+
+        Retornar matrizResultado  
+
+investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
+investimentosAno2 <- [[1200, 1800], [1300, 2700]]  
+
+totalInvestimentos <- SomarMatrizesInvestimento(investimentosAno1, investimentosAno2)  
+Escrever("Total de investimentos acumulados:")  
+ImprimirMatriz(totalInvestimentos)  
+```
+Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+````
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):  
+    Se colunas(matrizA) ≠ linhas(matrizB) então: 
+        Retornar "As matrizes não podem ser multiplicadas. O número de colunas de uma matriz deve ser igual ao número de linhas da outra."  
+    Senão:  
+        linhas <- linhas(matrizA)  
+        colunas <- colunas(matrizB)  
+        matrizResultado <- novaMatriz(linhas, colunas)  
+
+        # Loop para multiplicação correta das matrizes  
+        Para i de 0 até linhas-1 faça:  
+            Para j de 0 até colunas-1 faça:  
+                matrizResultado[i][j] <- 0  
+                Para k de 0 até colunas(matrizA)-1 faça:  
+                    matrizResultado[i][j] <- matrizResultado[i][j] + (matrizA[i][k] * matrizB[k][j])  
+
+        Retornar matrizResultado  
+
+investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
+investimentosAno2 <- [[1200, 1800], [1300, 2700]]  
+
+resultado <- MultiplicarMatrizesInvestimento(investimentosAno1, investimentosAno2)  
+Escrever("Efeito ao longo do tempo:")  
+ImprimirMatriz(resultado)  
+````
